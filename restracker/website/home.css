@@ -1,0 +1,31 @@
+
+body {
+ background-color: #d3d3d3;
+}
+
+h1 {
+ margin: 0px;
+ text-align: left;
+ font-size: 2em;
+}
+
+td {
+ width: 150px;
+}
+
+h1 {
+ color: #750020;
+ font-family: Georgia;
+ text-align: center;
+}
+
+table {
+ border: none;
+ border-spacing: 0px;
+ margin: 10px;
+}
+
+td {
+ width: 160px;
+ border: none;
+}
