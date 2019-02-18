@@ -6,16 +6,20 @@ body {
 h1 {
  margin: 0px;
  text-align: left;
- font-size: 2em;
+ font-size: 3em;
+ text-align: center;
+ color: #750020;
 }
 
 td {
  width: 150px;
+ text-align: center;
 }
 
-h1 {
- color: #750020;
+h2 {
  font-family: Georgia;
+ font-size: 2em;
+ margin: 10px;
  text-align: center;
 }
 
@@ -23,9 +27,12 @@ table {
  border: none;
  border-spacing: 0px;
  margin: 10px;
+ position: 
+ 
 }
 
 td {
  width: 160px;
  border: none;
 }
+
