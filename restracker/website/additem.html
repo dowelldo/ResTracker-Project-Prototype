@@ -1,0 +1,89 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="eng">
+<head>
+   <style>
+   </style>
+   <meta charset="utf-8">
+    <link rel="icon" href="breadlogo.png" type="image/gif" sizes="20x20">
+    <link href="home.css" rel="stylesheet" type="text/css" >
+    <title>Floyd's Inventory Tracker</title>
+	
+<style>
+	button {
+		width: 60px;
+		height: 20px;
+	}
+	
+	
+ </style>
+
+</head>
+
+<body>
+<h1>Floyd's Restaurant</h1>
+<h2>Add Item</h2>
+
+<div class="homebuttons" align="center">
+<table align="center">
+	<tr>
+		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/home.html"><button>Home</button></a></td>
+		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/edit.html"><button>Edit</button></a></td>
+		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkinvent.html"><button>View</button></a></td>
+	</tr>
+
+</table>
+</div>
+
+
+<div class="addform" align="left">
+<table align="left">
+	<form action="addform.php" method="post" id="addform">
+		<tr>
+			<td><p>Item Name:</p></td>
+			<td><input type="text" name="itemname"></td>
+		</tr>
+		<tr>
+			<td><p>Item Type:</p></td>
+			<td><select name="itemtype" id="itype" style="width: 165px;">
+				<option value="meat">Meat</option>
+				<option value="vegetable">Vegetable</option>
+				<option value="starch">Starch</option>
+				<option value="beverage">Beverage</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><p>Measuring Type:</p></td>
+			<td><select name="measuretype" id="mtype" style="width: 165px;">
+				<option value="pound">Pound</option>
+				<option value="liter">Liter</option>
+				<option value="box">Box</option>
+				<option value="container">Container</option>
+				<option value="other">Other</option>
+				</select>
+			</td>			
+		</tr>
+		<tr>
+			<td><p>Set Amount:</p></td>
+			<td><input type="text" name="amountoh"></td>
+		</tr>
+		<tr>
+			<td><p>Minimum Amount:</p></td>
+			<td><input type="text" name="minamount"></td>
+		</tr>
+		<tr>
+			<td><p>Description:</p></td>
+			<td><textarea name="description" rows="2" cols="25"></textarea>
+			</td>
+		</tr>
+		<tr align="left">
+			<td><input type="submit" value="Submit"></td>
+		</tr>
+	</form>
+	
+</table>
+</div>
+
+</body>
+</html>
