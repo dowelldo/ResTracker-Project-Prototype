@@ -52,4 +52,10 @@ td {
  text-align: left;	
 }
 
+.editform p{
+ text-align: left;
+}
 
+.menutd tr td {
+ text-align: center;
+}

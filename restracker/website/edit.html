@@ -5,7 +5,6 @@
  
  <link rel="icon" href="breadlogo.png" type="image/gif" sizes="20x20">
  <link href="home.css" rel="stylesheet" type="text/css" >
- <link href="home.css" rel="stylesheet" type="text/css" >
  <title>Floyd's Inventory Tracker</title>
  
  <style>
@@ -32,6 +31,44 @@
 
 </table>
 </div>
+
+
+<div class="editform" align="left">
+<table align="left">
+	<form action="editform.php" method="post" id="editform">
+		<tr>
+			<td><p>Item Name:</p></td>
+			<td><input type="text" name="itemname"></td>
+		</tr>
+
+		<tr>
+			<td><p>Add Amount:</p></td>
+			<td><input type="text" name="addamount"></td>
+		</tr>
+		
+		<tr>
+			<td><p>Subtract Amount:</p></td>
+			<td><input type="text" name="subtractamount"></td>
+		</tr>
+		
+		<tr>
+			<td><p>Set New Amount:</p></td>
+			<td><input type="text" name="setnewamount"></td>
+		</tr>
+
+		<tr>
+			<td><p>Update Description:</p></td>
+			<td><textarea name="updatedescription" rows="2" cols="25"></textarea>
+			</td>
+		</tr>
+		<tr align="left">
+			<td><input type="submit" value="Submit"></td>
+		</tr>
+	</form>
+	
+</table>
+</div>
+
 
 </body>
 </html>

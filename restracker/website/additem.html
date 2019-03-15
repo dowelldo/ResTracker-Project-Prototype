@@ -1,39 +1,141 @@
 <!doctype html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="eng">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-   <style>
-   </style>
-   <meta charset="utf-8">
-    <link rel="icon" href="breadlogo.png" type="image/gif" sizes="20x20">
-    <link href="home.css" rel="stylesheet" type="text/css" >
-    <title>Floyd's Inventory Tracker</title>
-	
-<style>
-	button {
-		width: 60px;
-		height: 20px;
-	}
-	
-	
- </style>
 
+ <link rel="icon" href="breadlogo.png" type="image/gif" sizes="20x20">
+ <link href="home.css" rel="stylesheet" type="text/css" >
+ <title>Floyd's Inventory Tracker</title>
+	
+ <style>
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+  float: center;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: center;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+  background-color: #750020;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+td {
+	
+}
+</style>
+ 
 </head>
 
 <body>
 <h1>Floyd's Restaurant</h1>
-<h2>Add Item</h2>
+<h2>Inventory Interface</h2>
 
-<div class="homebuttons" align="center">
-<table align="center">
-	<tr>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/home.html"><button>Home</button></a></td>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/edit.html"><button>Edit</button></a></td>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkinvent.html"><button>View</button></a></td>
-	</tr>
 
-</table>
+<div class="navbar" align="center">
+<table align="center" class="menutd">
+<tr>
+<td>
+  <div class="dropdown">
+  <button align="center" class="dropbtn" onclick="myFunction()">View
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content" id="myDropdown">
+    <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkoverall.html">Overall</a>
+    <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkneed.html">Need</a>
+    <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/searchinventory.html">Search</a>
+  </div>
+</td>
+  </div> 
+
+<td>
+<div class="edititembtn">
+  <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkinvent.html" align="center">Edit Item</a>
 </div>
+ </td>
+  
+<td>
+<div class="additembtn">
+  <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/additem.html" align="center">+ Item</a>
+</div>
+</td>
+ 
+  
+</tr>  
+</table>  
+</div>
+
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+  var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('show')) {
+      myDropdown.classList.remove('show');
+    }
+  }
+}
+</script>
+
+
 
 
 <div class="addform" align="left">

@@ -21,13 +21,11 @@ if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error);
 } 
 
-$sql = "INSERT INTO Inventory (name, type, quantity, measuring, minimum, description)
+$sql_insert = "INSERT INTO Inventory (name, type, quantity, measuring, minimum, description)
  VALUES ('$name','$type','$quantity','$measuring','$minimum','$description')";
 
 
-
-if ($conn->query($sql)) {
-    echo "New record created successfully";
+ if ($conn->query($sql_insert)) {    echo "new record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
