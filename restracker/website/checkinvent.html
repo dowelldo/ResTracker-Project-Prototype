@@ -1,57 +1,118 @@
-<!doctype html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<html lang="eng">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-   <meta charset="utf-8">
-    <link rel="icon" href="breadlogo.png" type="image/gif" sizes="20x20">
-    <link href="home.css" rel="stylesheet" type="text/css" >
-    <title>Floyd's Inventory Tracker</title>
-	
-<style>
-	.homebuttons button {
-		width: 60px;
-		height: 20px;
-	}
-	.viewbuttons button{
-		width: 150px;
-		height: 115px;
-		margin-top: 25px;
-		margin-bottom: 15px;
-		font-size: 20px;
-	}
- </style>
+  <title>Floyd's Inventory Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="breadlogo.png" type="image/gif" sizes="20x20">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
 
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  
+  body {
+	background-color: #f3f3f3;
+  }
+  
+  #floydinvent {
+	color: white;
+	font-family: Georgia;
+  }
+  
+  #hat {
+  height: 30px;
+  width: 30px;
+  margin-bottom: 0px;
+  }
+  
+  </style>
 </head>
-
 <body>
-<h1>Floyd's Restaurant</h1>
-<h2>View Inventory</h2>
 
-<div class="homebuttons" align="center">
-<table align="center">
-	<tr>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/home.html"><button>Home</button></a></td>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/edit.html"><button>Edit</button></a></td>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/additem.html"><button>Add</button></a></td>
-	</tr>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a id="floydinvent" class="navbar-brand" href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/home.html"><div class="yeah"><img style="margin:0px 0px 0px 0px" id="hat" src="chefhat2.jpg" alt="Logo">  Floyd's Inventory System</div></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/home.html"><span class="glyphicon glyphicon-home"></span>	Home</a></li>
+        <li><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkinvent.html"><span class="glyphicon glyphicon-eye-open"></span>	View</a></li>
+        <li><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/edit.html"><span class="glyphicon glyphicon-pencil"></span>	Edit Item</a></li>
+        <li><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/whattoadd.html"><span class="glyphicon glyphicon-plus"></span>	Add Item</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-</table>
-</div>
 
-<div class="viewbuttons" align="center">
-<table align="center">
-	<tr>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkoverall.html"><button>Overall</button></a></td>
-	</tr>
-	<tr>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkneed.html"><button>Need</button></a></td>
-	</tr>
-	<tr>
-		<td><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/searchinventory.html"><button>Search</button></a></td>
-	</tr>
+<div class="container text-center">    
+  <h3>What would you like to see?</h3><br>
+  <div class="row">
+    <div class="col-sm-6">
+	<a id="arecipe" href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/addrecipe.html">
+      <div class="recipebtn">
+	  <img src="ingredients.jfif" class="img-responsive" style="width:100%; height:180px" alt="Image"> 
+	  <p style="font-family: impact;">Overall Inventory</p>
+	  </div>
+    </a>  
+    </div>
+	
+    <div class="col-sm-6"> 
+	<a id="arecipe" href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/additem.html">
+      <div class="itembtn">
+      <img src="produceinventory.jpg" class="img-responsive" style="width:100%; height:180px" alt="Image">
+      <p style="font-family: impact;">What you need</p> 
+    </div>
+	</a>
+    </div>
+	
+	<div class="col-md-6 offset-md-3"> 
+	<a id="arecipe" href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/additem.html">
+      <div class="itembtn">
+      <img src="produceinventory.jpg" class="img-responsive" style="width:100%; height:180px" alt="Image">
+      <p style="font-family: impact;">What you need</p> 
+    </div>
+	</a>
+    </div>
+	
+</div><br>
 
-</table>
-</div>
+<footer class="container-fluid text-center">
+  <p>Floyd's Restaurant Incorporated <span class="glyphicon glyphicon-registration-mark"></span></p>
+</footer>
 
 </body>
 </html>

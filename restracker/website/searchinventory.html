@@ -28,7 +28,7 @@
   overflow: hidden;
 }
 
-.dropdown .dropbtn {
+.dropdown .viewbtn .editbtn{
   cursor: pointer;
   font-size: 16px;  
   border: none;
@@ -40,11 +40,11 @@
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+.navbar a:hover, .dropdown:hover .viewbtn, .viewbtn:focus .editbtn, .editbtn:focus{
   background-color: #750020;
 }
 
-.dropdown-content {
+.dropdown-content{
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -70,39 +70,52 @@
   display: block;
 }
 
-td {
-	
+h3 {
+  font-size: 2em;
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
 }
 </style>
  
 </head>
 
 <body>
-<h1>Floyd's Restaurant</h1>
-<h2>Search Inventory</h2>
-
+	<div class="homebtn">
+		<a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/home.html" align="center"><h1>Floyd's Restaurant</h1></a>
+	</div>
+<h3 align="center" size="2em">Databasing System</h3>
 
 <div class="navbar" align="center">
 <table align="center" class="menutd">
 <tr>
 <td>
   <div class="dropdown">
-  <button align="center" class="dropbtn" onclick="myFunction()">View
+  <button align="center" class="viewbtn" onclick="viewFunction()">View
     <i class="fa fa-caret-down"></i>
   </button>
-  <div class="dropdown-content" id="myDropdown">
+  <div class="dropdown-content" id="viewDropdown">
     <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkoverall.html">Overall</a>
     <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkneed.html">Need</a>
     <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/searchinventory.html">Search</a>
   </div>
-</td>
   </div> 
+</td>
+
 
 <td>
-<div class="edititembtn">
-  <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkinvent.html" align="center">Edit Item</a>
-</div>
- </td>
+  <div class="dropdown">
+  <button align="center" class="editbtn" onclick="editFunction()">Edit Item
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content" id="editDropdown">
+    <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkoverall.html">Edit Amount</a>
+    <a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkneed.html">Edit Attribute</a>
+  </div>
+</div> 
+</td>
   
 <td>
 <div class="additembtn">
@@ -118,22 +131,58 @@ td {
 
 
 <script>
-/* When the user clicks on the button, 
+/* When the user clicks on the button, **VIEW**
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+function viewFunction() {
+  document.getElementById("viewDropdown").classList.toggle("show");
 }
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(e) {
-  if (!e.target.matches('.dropbtn')) {
-  var myDropdown = document.getElementById("myDropdown");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
+  if (!e.target.matches('.viewbtn')) {
+  var viewDropdown = document.getElementById("viewDropdown");
+    if (viewDropdown.classList.contains('show')) {
+      viewDropdown.classList.remove('show');
+    }
+  }
+}
+
+/* When the user clicks on the button, **EDIT**
+toggle between hiding and showing the dropdown content */
+function editFunction() {
+  document.getElementById("editDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.editbtn')) {
+  var editDropdown = document.getElementById("editDropdown");
+    if (editDropdown.classList.contains('show')) {
+      editDropdown.classList.remove('show');
+    }
+  }
+}
+
+/* When the user clicks on the button, **+ITEM**
+toggle between hiding and showing the dropdown content */
+function itemFunction() {
+  document.getElementById("searchDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.itembtn')) {
+  var searchDropdown = document.getElementById("searchDropdown");
+    if (searchDropdown.classList.contains('show')) {
+      searchDropdown.classList.remove('show');
     }
   }
 }
 </script>
+
+<h2>Search Inventory</h2>
+
+<p><br></p>
 
 <p><br></p>
 

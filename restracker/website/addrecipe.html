@@ -93,18 +93,18 @@ td {
   </div>
 </nav>
 
-<h2 id="haddit" style="text-align: center" >Add Inventory</h2>  
+<h2 id="haddit" style="text-align: center" >Add Recipe</h2>  
 
 <div class="addform" align="left">
-	<form action="addform.php" method="post" id="addform">
+	<form action="addrecipe.php" method="post" id="recform">
 		<div class="form-group">
-			<label for="iname" style="padding-left: 10px">Item Name:</label>
-			<input type="text" class="form-control" id="iname" placeholder="Enter item name" name="itemname">
+			<label for="iname" style="padding-left: 10px">Recipe Name:</label>
+			<input type="text" class="form-control" id="rname" placeholder="Enter recipe name" name="recipename">
 		</div>
 		
 		<div class="form-group">
-			<label for="itype" style="padding-left: 10px">Item Type:</label>
-			<select class="form-control" name="itemtype" id="itype" style="width: 165px;">
+			<label for="itype" style="padding-left: 10px">Recipe Type:</label>
+			<select class="form-control" name="recipetype" id="rtype" style="width: 165px;">
 				<option value="meat">Meat</option>
 				<option value="vegetable">Vegetable</option>
 				<option value="starch">Starch</option>
@@ -124,18 +124,14 @@ td {
 		</div>
 		
 		<div class="form-group">
-			<label for="iamount" style="padding-left: 10px">Set Amount:</label>
-			<input type="text" class="form-control" id="iamount" placeholder="Enter initial amount" name="amountoh">
+			<label for="iamount" style="padding-left: 10px">Serving Size:</label>
+			<input type="text" class="form-control" id="ramount" placeholder="Enter initial amount" name="servamount">
 		</div>
 		
-		<div class="form-group">
-			<label for="imini" style="padding-left: 10px">Minimum Amount:</label>
-			<input type="text" class="form-control" id="imini" placeholder="Enter minimum amount for notification" name="minamount">
-		</div>
 		
 		<div class="form-group">
-			<label for="desc" style="padding-left: 10px">Description:</label>
-			<textarea class="form-control rounded-0" id="idesc" placeholder="Enter item description" name="description"></textarea>
+			<label for="desc" style="padding-left: 10px">Ingredients: (comma delimitted)</label>
+			<textarea class="form-control rounded-0" id="rdesc" placeholder="Enter item description" name="description"></textarea>
 		</div>
 		
 		<div class="text-center"><button type="submit" class="btn btn-default">Submit</button><div>

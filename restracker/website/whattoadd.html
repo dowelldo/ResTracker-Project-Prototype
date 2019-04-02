@@ -49,22 +49,6 @@
   margin-bottom: 0px;
   }
   
- .addform p{
- text-align: left;	
- }
- 
- table {
- border: none;
- border-spacing: 0px;
- margin: 10px;
- 
-}
-
-td {
- width: 160px;
- border: none;
-}
-  
   </style>
 </head>
 <body>
@@ -93,56 +77,31 @@ td {
   </div>
 </nav>
 
-<h2 id="haddit" style="text-align: center" >Add Inventory</h2>  
 
-<div class="addform" align="left">
-	<form action="addform.php" method="post" id="addform">
-		<div class="form-group">
-			<label for="iname" style="padding-left: 10px">Item Name:</label>
-			<input type="text" class="form-control" id="iname" placeholder="Enter item name" name="itemname">
-		</div>
-		
-		<div class="form-group">
-			<label for="itype" style="padding-left: 10px">Item Type:</label>
-			<select class="form-control" name="itemtype" id="itype" style="width: 165px;">
-				<option value="meat">Meat</option>
-				<option value="vegetable">Vegetable</option>
-				<option value="starch">Starch</option>
-				<option value="beverage">Beverage</option>
-			</select>
-		</div>
-		
-		<div class="form-group">
-			<label for="mtype" style="padding-left: 10px">Measuring Type:</label>
-			<select class="form-control" name="measuretype" id="mtype" style="width: 165px;">
-				<option value="pound">Pound</option>
-				<option value="liter">Liter</option>
-				<option value="box">Box</option>
-				<option value="container">Container</option>
-				<option value="other">Other</option>
-			</select>
-		</div>
-		
-		<div class="form-group">
-			<label for="iamount" style="padding-left: 10px">Set Amount:</label>
-			<input type="text" class="form-control" id="iamount" placeholder="Enter initial amount" name="amountoh">
-		</div>
-		
-		<div class="form-group">
-			<label for="imini" style="padding-left: 10px">Minimum Amount:</label>
-			<input type="text" class="form-control" id="imini" placeholder="Enter minimum amount for notification" name="minamount">
-		</div>
-		
-		<div class="form-group">
-			<label for="desc" style="padding-left: 10px">Description:</label>
-			<textarea class="form-control rounded-0" id="idesc" placeholder="Enter item description" name="description"></textarea>
-		</div>
-		
-		<div class="text-center"><button type="submit" class="btn btn-default">Submit</button><div>
-		
-	</form>
-</div>
+<div class="container text-center">    
+  <h3>What would you like to add?</h3><br>
+  <div class="row">
+    <div class="col-sm-6">
+	<a id="arecipe" href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/addrecipe.html">
+      <div class="recipebtn">
+	  <img src="ingredients.jfif" class="img-responsive" style="width:100%; height:180px" alt="Image"> 
+	  <p style="font-family: impact;">Recipe</p>
+	  </div>
+    </a>  
+    </div>
+    <div class="col-sm-6"> 
+	<a id="arecipe" href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/additem.html">
+      <div class="itembtn">
+      <img src="produceinventory.jpg" class="img-responsive" style="width:100%; height:180px" alt="Image">
+      <p style="font-family: impact;">Inventory</p> 
+    </div>
+	</a>
+  </div>
+</div><br>
 
+<footer class="container-fluid text-center">
+  <p>Floyd's Restaurant Incorporated <span class="glyphicon glyphicon-registration-mark"></span></p>
+</footer>
 
 </body>
 </html>

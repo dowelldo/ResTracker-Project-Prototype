@@ -14,18 +14,26 @@ if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error);
 } 
 
-$sql = "SELECT * FROM Inventory";
-$result = mysqli_query($dbc, $sql) or die("Bad query: $sql");
+// NEW CODE!!!!!!!!!
 
+if(isset($_POST['search'])){
+	$q = $_POST['q'];
+	$query = mysqli_query($conn,"SELECT * FROM `table_name` WHERE `thing_to_search` LIKE '%$qname%'"); 
+//Replace table_name with your table name and `thing_to_search` with the column you want to search
+	$count = mysqli_num_rows($query);
+	if($count == "0"){
+		$output = '<h2>No result found!</h2>';
+	}else{
+		while($row = mysqli_fetch_array($query)){
+		$s = $row['column_to_display']; // Replace column_to_display with the column you want the results from
+				$output .= '<h2>'.$s.'</h2><br>';
+			}
+		}
+	}
 
-echo"<p>HELLLOOOOOO</p>";
-echo"<table border='1'>";
-echo"<tr><td>Item</td><td>Type</td><td>Quantity</td><td>Measurement</td><td>Minimum</td><td>Description</td></tr>";
-
-
-echo"</table>";
-
- if ($conn->query($sql_insert)) {    echo "new record created successfully";
+// END OF NEW CODE!!!!!!!!!!!!	
+	
+ if ($conn->query($sql_insert)) {    echo "table shown";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
