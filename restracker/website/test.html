@@ -1,0 +1,31 @@
+<html>
+<body>
+	<script>
+		function notifyMe() {
+			if (!("Notification" in window)) {
+				alert("no notification support");
+			}
+			else if (Notification.permission === "granted") {
+				var notification = new Notification("Hi there!", {body : "I am a friendly notifiacation from the student machine"});
+				console.log("also made it here");
+				notification.show;
+			}
+			else if (Notification.permission !== "denied") {
+				Notification.requestPermission(function (permission) {
+					if (permission === "granted") {
+						var notification = new Notification('Hi there!', {body : "Hello"});
+						notification.show;
+						console.log("made it here");
+					}
+				});
+			}
+		}
+		
+		function notifyMe2() {
+			var notif = new Notification("Hello", {body : "Hi there fren I'm an unsolicited notification :D"});
+			notif.show;
+		}
+		notifyMe();
+	</script>
+</body>
+</html>

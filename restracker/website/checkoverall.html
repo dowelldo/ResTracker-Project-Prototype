@@ -68,8 +68,14 @@ td {
 #searchbtn {
  align-items: center;
 }
+
+th{
+text-align: center;
+font_weight: bold;
+}
   
-  </style>
+tr:nth-child(even) {background-color: #d3d3d3;}
+</style>
 </head>
 <body>
 
@@ -97,22 +103,82 @@ td {
   </div>
 </nav>
 
-<h2 id="hedit" style="text-align: center" >Edit Item</h2>
+<h2 id="hedit" style="text-align: center" >Overall Inventory</h2>
 
-<!-- Search form -->
-<div class="editform" align="left">
-	<form action="editform.php" method="post" id="editform"></form>
-		<div class="form-group">
-			<div class="md-form mt-0">
-			<input class="form-control" type="text" placeholder="What item would you like to ammend?" aria-label="Search">
-			<div>
-	</div>
-  
-  <br>
-  
-		<div class="text-center"><button type="submit" class="btn btn-default" id="searchbtn">Search</button><div>
-	</form>
-</div>	
+<table class="table table-hover text-centered">
+
+<?php
+
+$servername = "localhost";
+$username = "capstone-191-t1";
+$password = "D2BUdK5C4zTpnceJ";
+$dbname = "4800-191-t1";
 	
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+
+if (mysqli_connect_error()) {
+    die("Connection failed: " . mysqli_connect_error);
+} 
+
+mysqli_select_db($conn,"4800-191-t1");
+
+$query = "SELECT * FROM Inventory"; //You don't need a ; like you do in SQL
+
+//mysql_select_db($dbname, $conn);
+
+$result = mysqli_query($conn, "SELECT * FROM Inventory");
+if(!$result){
+ die('Not Connected' . mysql_error());
+}
+//else{
+// echo "database selected";
+//}
+
+
+echo "<th>Name</th>";
+echo "<th>Type</th>";
+echo "<th>Qty.</th>";
+echo "<th>Msr.</th>";
+echo "<th>Desc.</th>";
+
+while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
+{ 
+
+ if ($row['quantity'] > $row['minimum'])
+ {	
+	echo "<tr><td>" . $row['name'] . "</td><td>" . $row['type'] . "</td><td>"
+  . $row['quantity'] . "</td><td>" . $row['measuring'] . "</td><td>"
+  . $row['description'] . "</td></tr>"; 
+ }
+ else
+ {
+	echo "<tr style=\"color:#D05050\"><td>" . $row['name'] . "</td><td>" . $row['type'] . "</td><td>"
+  . $row['quantity'] . "</td><td>" . $row['measuring'] . "</td><td>"
+  . $row['description'] . "</td></tr>"; 
+ }
+}
+echo "</table>";
+
+
+$conn->close();
+
+//db user: capstone-191-t1
+//db pass: D2BUdK5C4zTpnceJ
+// name, type, quantity, mytpe, min, description
+
+//INSERT INTO Inventory (name, type, quantity, measuring, minimum, description)
+// VALUES ('chicken','meat','5','pound','3','keep refrigerated');
+
+echo "<br><br><br>";
+
+
+?>
+
+<footer class="container-fluid text-center">
+  <p>Floyd's Restaurant Incorporated <span class="glyphicon glyphicon-registration-mark"></span></p>
+</footer>
+
 </body>
 </html>

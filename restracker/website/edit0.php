@@ -2,17 +2,13 @@
 
 $name = filter_input(INPUT_POST, 'itemname');
 $type = filter_input(INPUT_POST, 'itemtype');
-$quantity = filter_input(INPUT_POST, 'amountoh');
-$measuring = filter_input(INPUT_POST, 'measuretype');
-$minimum = filter_input(INPUT_POST, 'minamount');
-$description = filter_input(INPUT_POST, 'description');
 
 $servername = "localhost";
 $username = "capstone-191-t1";
 $password = "D2BUdK5C4zTpnceJ";
 $dbname = "4800-191-t1";
 
-
+$done = false;
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -21,19 +17,39 @@ if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error);
 } 
 
-$query = "SELECT * FROM Inventory"; //You don't need a ; like you do in SQL
-$result = mysql_query($query);
 
-echo "<table>"; // start a table tag in the HTML
+$query = "SELECT * FROM '$type' WHERE name LIKE '$name'"; //You don't need a ; like you do in SQL
 
-while($row = mysql_fetch_array($result)){   //Creates a loop to loop through results
-echo "<tr><td>" . $row['name'] . "</td><td>" . $row['type'] . "</td><td>"
-  . $row['quantity'] . "</td><td>" . $row['measuring'] . "</td><td>"
-  . $row['minimum'] . "</td><td>"
-  . $row['description'] . "</td></tr>"; 
+//mysql_select_db($dbname, $conn);
+
+$result = mysqli_query($conn, $query);
+if(!$result){
+ die('Not Connected' . mysql_error());
 }
 
-echo "</table>"; //Close the table in HTML
+echo "<table>";
+echo "<th>Name</th>";
+echo "<th>Type</th>";
+echo "<th>Qty.</th>";
+echo "<th>Msr.</th>";
+echo "<th>Desc.</th>";
+
+while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
+{ 
+	echo "<tr><td>" . $row['name'] . "</td><td>" . $row['type'] . "</td><td>"
+  . $row['quantity'] . "</td><td>" . $row['measuring'] . "</td><td>"
+  . $row['description'] . "</td></tr>"; 
+}
+echo "</table>";
+
+
+ if ($conn->query($sql_insert)) {
+ echo "new record created successfully";
+} 
+else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
 
 $conn->close();
 

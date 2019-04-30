@@ -11,7 +11,7 @@ $username = "capstone-191-t1";
 $password = "D2BUdK5C4zTpnceJ";
 $dbname = "4800-191-t1";
 
-
+$done = false;
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -24,10 +24,20 @@ $sql_insert = "INSERT INTO Recipe (name, type, measuring, serv_size, description
  VALUES ('$name','$type','$mtype','$samount', '$description')";
 
 
- if ($conn->query($sql_insert)) {    echo "new record created successfully";
-} else {
+ if ($conn->query($sql_insert)) {
+	 echo "new record created successfully";
+	 $done = true;
+} 
+else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+if($done)
+{
+	header("Location: http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/recipebook.html");
+	exit;
+}
+
 
 $conn->close();
 

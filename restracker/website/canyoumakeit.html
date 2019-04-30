@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<!--
+	This page will display all recipes that cannot
+	be created due to inventory shortages.  If a
+	recipe contains at least one ingredient that
+	has an amount that is below the minimum, it
+	will print that recipe along with the lacking
+	ingredients.
+-->
+<html lang="en">
+<head>
+  <title>Floyd's Inventory Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="breadlogo.png" type="image/gif" sizes="20x20">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="getpermission.js"></script>
+  <script src="notify.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  
+  body {
+	background-color: #f3f3f3;
+  }
+  
+  #floydinvent {
+	color: white;
+	font-family: Georgia;
+  }
+  
+  #hat {
+  height: 30px;
+  width: 30px;
+  margin-bottom: 0px;
+  }
+  
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a id="floydinvent" class="navbar-brand" href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/home.html"><div class="yeah"><img style="margin:0px 0px 0px 0px" id="hat" src="chefhat2.jpg" alt="Logo">  Floyd's Inventory System</div></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/home.html"><span class="glyphicon glyphicon-home"></span>	Home</a></li>
+        <li><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkinvent.html"><span class="glyphicon glyphicon-eye-open"></span>	View</a></li>
+        <li><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/edit.html"><span class="glyphicon glyphicon-pencil"></span>	Edit Item</a></li>
+        <li><a href="http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/whattoadd.html"><span class="glyphicon glyphicon-plus"></span>	Add Item</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!---------------------------------------------->
+
+<div class="container text-center">
+	<h3>Recipes You Cannot Make:</h3>
+</div>
+<table class="table table-hover text-centered">
+<?php
+$servername = "localhost";
+$username = "capstone-191-t1";
+$password = "D2BUdK5C4zTpnceJ";
+$dbname = "4800-191-t1";
+	
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+
+if (mysqli_connect_error()) {
+    die("Connection failed: " . mysqli_connect_error);
+} 
+
+mysqli_select_db($conn,"4800-191-t1");
+
+// get the recipe and the inventory databases
+$recipes = mysqli_query($conn, "SELECT * FROM Recipe");
+$inventory = mysqli_query($conn, "SELECT * FROM Inventory");
+while($rrow = mysqli_fetch_array($recipes,MYSQLI_ASSOC)) {
+	// make an array out of the description field in the database
+	$ingredients = explode(',', $rrow['description']);
+	// trim off any white space on the values
+	for ($i = 0; $i < count($ingredients); $i++) {
+		$ingredients[$i] = trim($ingredients[$i]);
+		$query = "SELECT * FROM Inventory WHERE name = '$ingredients[$i]'";
+		$result = mysqli_query($conn, $query);
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		if ($row['minimum'] > $row['quantity'] || count($row) == 0) {
+			echo "<p><h3>" . $rrow['name'] . "</h3></p>\r\n";
+			for ($j = 0; $j < count($ingredients); $j++) {
+				echo "<p>" . $ingredients[$j] . "</p>\r\n";
+			}
+			break;
+		}
+	}
+	//echo "<p><h3>" . $rrow['name'] . "</h3></p>\r\n";
+}
+?>
+</table>
+</body>
+</html>
