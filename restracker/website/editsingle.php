@@ -108,8 +108,13 @@ echo "<h3 id=\"hedit\" style=\"text-align: center\" >{$name}</h3>";
 
 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
+if ($place == "Inventory") {
 echo "<div class=\"addform\" align=\"left\">";
-echo 	"<form action=\"addform.php\" method=\"post\" id=\"addform\">";
+echo 	"<form action=\"inventoryupdate.php\" method=\"post\" id=\"addform\">";
+		
+echo 		"<div class=\"form-group\">
+				<input type = \"hidden\" name = \"naym\" value = {$name} />
+			</div>";		
 		
 echo 		"<div class=\"form-group\">";
 echo 			"<label for=\"itype\" style=\"padding-left: 10px\">Item Type: (current : " . $row['type'] . ")</label>";
@@ -151,8 +156,53 @@ echo 		"<div class=\"text-center\"><button type=\"submit\" class=\"btn btn-defau
 		
 echo 	"</form>";
 echo  "</div>";
+}
 
+else if ($place == "Recipe") {
+echo "<div class=\"addform\" align=\"left\">";
+echo 	"<form action=\"recipeupdate.php\" method=\"post\" id=\"addform\">";
+			
+echo 		"<div class=\"form-group\">
+				<input type = \"hidden\" name = \"naym\" value = {$name} />
+			</div>";		
+			
+echo 		"<div class=\"form-group\">";
+echo 			"<label for=\"itype\" style=\"padding-left: 10px\">Item Type: (current : " . $row['type'] . ")</label>";
+echo 			"<select class=\"form-control\" name=\"itemtype\" id=\"rtype\" style=\"width: 165px;\">";
+echo 				"<option value=\"meat\">Meat</option>";
+echo 				"<option value=\"vegetable\">Vegetable</option>";
+echo 				"<option value=\"starch\">Starch</option>";
+echo 				"<option value=\"beverage\">Beverage</option>";
+echo 			"</select>";
+echo 		"</div>";
+		
+echo 		"<div class=\"form-group\">";
+echo 			"<label for=\"mtype\" style=\"padding-left: 10px\">Measuring Type: (current : " . $row['measuring'] . ")</label>";
+echo 			"<select class=\"form-control\" name=\"measuretype\" id=\"mtype\" style=\"width: 165px;\">";
+echo 				"<option value=\"pound\">Pound</option>";
+echo 				"<option value=\"liter\">Liter</option>";
+echo 				"<option value=\"box\">Box</option>";
+echo 				"<option value=\"container\">Container</option>";
+echo 				"<option value=\"other\">Other</option>";
+echo 			"</select>";
+echo 		"</div>";
+		
+echo 		"<div class=\"form-group\">";
+echo 			"<label for=\"iamount\" style=\"padding-left: 10px\">Serving Size: (current : " . $row['serv_size'] . ")</label>";
+echo 			"<input type=\"text\" class=\"form-control\" id=\"ramount\" placeholder=\"Enter initial amount\" name=\"servamount\">";
+echo 		"</div>";
+		
+echo 		"<div class=\"form-group\">";
+echo 			"<label for=\"desc\" style=\"padding-left: 10px\">Ingredients: (comma delimitted) (current : " . $row['description'] . ")</label>";
+echo 			"<textarea class=\"form-control rounded-0\" id=\"rdesc\" placeholder=\"Enter item description\" name=\"description\"></textarea>";
+echo 		"</div>";
+		
+echo 		"<div class=\"text-center\"><button type=\"submit\" class=\"btn btn-default\">Submit</button></div>";
+		
+echo 	"</form>";
+echo  "</div>";
 
+}
 
 
 $conn->close();
