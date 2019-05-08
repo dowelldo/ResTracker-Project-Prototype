@@ -102,96 +102,14 @@ echo "
 </nav>
 	";
   
-echo "<h2 id=\"hedit\" style=\"text-align: center\" >Edit Item</h2>";
+echo "<h2 id=\"hedit\" style=\"text-align: center\" > Remove Item</h2>";
   
-echo "<form action=\"editsearch.php\" method=\"GET\" id=\"editform\">";
-echo		"<div class=\"form-group\">";
-echo			"<div class=\"md-form mt-0\">";
-echo			"<input class=\"form-control\" type=\"text\" name=\"itemname\" placeholder=\"What item would you like to ammend?\" aria-label=\"Search\">";
-echo			"<div>";
-echo	"</div>";  
-  
-echo	"<div class=\"form-group\">";
-echo		"<div align=\"center\">";
-echo		"<label for=\"itype\" style=\"padding-left: 10px\">Item Type:</label>";
-echo		"<select class=\"form-control\" name=\"itemtype\" id=\"itype\" style=\"width: 165px;\">";
-echo			"<option value=\"Inventory\">Inventory</option>";
-echo			"<option value=\"Recipe\">Recipe</option>";
-echo		"</select>";
-echo		"</div>";
-echo	"</div>";
-  
-  
-echo		"<div class=\"text-center\"><button type=\"submit\" class=\"btn btn-default\" id=\"searchbtn\">Search</button><div>";
-echo "</form>";
+echo "<h3 id=\"hedit\" style=\"text-align: center\" > Are you sure you want to remove<br>{$name}?</h3>";
 
-
-echo "<h2>";
-echo $place;
-echo "</h2>";
-
-$rowcount=mysqli_num_rows($result);
-if($rowcount > 0){ 
-  echo $rowcount . " Result(s) found.";
-  }
-  else
-  { 
-  echo "No records found"; 
-  }
-
-echo "<table class=\"table table-hover text-centered\">";
-
-if ($place == "Inventory"){
-echo "<th>Name</th>";
-echo "<th>Type</th>";
-echo "<th>Qty.</th>";
-echo "<th>Edit</th>";
-echo "<th>Remove</th>";
-}
-else if ($place == "Recipe"){
-echo "<th>Name</th>";
-echo "<th>Type</th>";
-echo "<th>Ser. Sz.</th>";
-echo "<th>Edit</th>";
-echo "<th>Remove</th>";
-}
-
-if ($place == "Inventory"){
-while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-{ 
-
- if ($row['quantity'] > $row['minimum'])
- {	
-	echo "<tr><td>" . $row['name'] . "</td><td>" . $row['type'] . "</td><td>"
-  . $row['quantity'] . "</td><td>" . $row['measuring'] . "</td><td>"
-  . $row['description'] . "</td></tr>"; 
- }
- else
- {
-	echo "<tr style=\"color:#D05050\"><td>" . $row['name'] . "</td><td>" . $row['type'] . "</td><td>"
-  . $row['quantity'] . "</td><td>" . $row['measuring'] . "</td><td>"
-  . $row['description'] . "</td></tr>"; 
- }
-}
-}
-else if ($place == "Recipe") {
-while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-{ 
-
-	echo 
-	"<tr><td>" . $row['name'] 
-	. "</td><td>" . $row['type'] 
-	. "</td><td>" . $row['serv_size'] 
-	. "</td><td>" . "<a href=\"http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkinvent.html\"><span class=\"glyphicon glyphicon-pencil\"></span>	Edit</a>"
-    . "</td><td>" . "<a href=\"http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/checkinvent.html\"><span class=\"glyphicon glyphicon-remove\"></span>	Remove</a>" 
-	. "</td></tr>"; 
-
-}
-}
-echo "</table>";
-
-
-
+echo	"<div style=\"text-align:center\">
+		<a href=\"http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/remove.php?itemname={$name}&itemtype={$place}\"><button type=\"button\" class=\"btn btn-primary\">Yes</button></a>
+		<a href=\"https://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/edit.html\"><button type=\"button\" class=\"btn btn-dark\">No</button></a>
+		</div>";
 
 $conn->close();
 

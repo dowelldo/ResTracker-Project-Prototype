@@ -1,12 +1,7 @@
-
 <?php
 
-$name = filter_input(INPUT_POST, 'naym');
+$name = filter_input(INPUT_POST, 'itemname');
 $type = filter_input(INPUT_POST, 'itemtype');
-$quantity = filter_input(INPUT_POST, 'amountoh');
-$measuring = filter_input(INPUT_POST, 'measuretype');
-$minimum = filter_input(INPUT_POST, 'minamount');
-$description = filter_input(INPUT_POST, 'description');
 
 $servername = "localhost";
 $username = "capstone-191-t1";
@@ -22,17 +17,26 @@ if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error);
 } 
 
-$query = "UPDATE Inventory SET type = '$type', quantity = '$quantity', measuring = '$measuring', minimum = $minimum, description = '$description' WHERE name = '$name'";
+$name = $_GET ['itemname'];
+$place = $_GET ['itemtype'];
 
 
- if ($conn->query($query)) {
-	 echo "record updated successfully";
-	 $done = true;
-	 
-	 echo $query;
-} 
+if($place == "Inventory" or $place == "Recipe"){
+$query = "DELETE FROM $place WHERE name = '$name'";
+}
+else{
+echo "There was an issue in deciding location. ";
+}
+
+echo $query;
+//mysql_select_db($dbname, $conn);
+
+if ($conn->query($query) === TRUE){
+	echo "Record removed successfully";
+	$done = true;
+}
 else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+	echo "Error removing: " . $conn->error;
 }
 
 if($done)
@@ -50,4 +54,5 @@ $conn->close();
 //INSERT INTO Inventory (name, type, quantity, measuring, minimum, description)
 // VALUES ('chicken','meat','5','pound','3','keep refrigerated');
 
-?> 
+
+?>

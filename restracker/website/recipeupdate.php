@@ -29,15 +29,10 @@ $query = "UPDATE Recipe SET type = '$type', measuring = '$mtype', serv_size = $s
 	 $done = true;
 	 
 	 echo $query;
+	 echo $name;
 } 
 else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-if($done)
-{
-	header("Location: http://student2.cs.appstate.edu/teams/4800-191-t1/restracker/website/recipebook.html");
-	exit;
 }
 
 

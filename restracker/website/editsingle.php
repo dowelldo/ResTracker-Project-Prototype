@@ -164,7 +164,7 @@ echo 	"<form action=\"recipeupdate.php\" method=\"post\" id=\"addform\">";
 			
 echo 		"<div class=\"form-group\">
 				<input type = \"hidden\" name = \"naym\" value = {$name} />
-			</div>";		
+			</div>";
 			
 echo 		"<div class=\"form-group\">";
 echo 			"<label for=\"itype\" style=\"padding-left: 10px\">Item Type: (current : " . $row['type'] . ")</label>";
